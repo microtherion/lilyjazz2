@@ -11,6 +11,7 @@ The only added files are:
 * `morejazz.ily`, a number of tweaks to the chord name display, notably
    * Using a triangle instead of "M" for major 7th chords.
    * Adding a few more exotic chord combinations.
+   * Defining stacked alterations in a way that is more robust to font size variations.
 
 To restore the chord naming in the original package, add `\set chordNameExceptions = #JazzChords` in your file.
 

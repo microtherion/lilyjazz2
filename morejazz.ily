@@ -2,6 +2,19 @@
   (interpret-markup layout props
     (markup #:super "^" #:super extension)))
 
+#(define-markup-command (acAlt layout props strA strB strC) (string? string? string?)
+  (interpret-markup layout props
+    (markup
+      #:super strA
+      #:fontsize 1.5 "["
+      #:fontsize -4
+      #:translate-scaled (cons 0 2.5)
+      (#:column (strB strC))
+      #:fontsize 1.5 "]"
+    )
+  )
+)
+
 MoreJazzChordsList = {
 % Use dim7, not 7dim
   <c es ges beses>-\markup { \super "dim7" } % :dim7
@@ -31,6 +44,11 @@ MoreJazzChordsList = {
   <c f g bes d' a'>-\markup { \super "13sus" } % :sus4.13.9.7
   <c f g bes des'>-\markup { \super "7sus(>9)" }  % :sus4.7.9-
   <c f g bes des' a'>-\markup { \super "13sus(>9)" } % :sus4.13.9-.7
+% Tweaked multi-alteration chords
+  <c e ges bes des'>-\markup { \override #'(baseline-skip . 2) \acAlt #"7" #">9" #">5" } % :9-.5-
+  <c e gis bes des'>-\markup { \override #'(baseline-skip . 2) \acAlt #"7" #">9" #"<5" } % :9-.5+
+  <c e ges bes dis'>-\markup { \override #'(baseline-skip . 2) \acAlt #"7" #"<9" #">5" } % :9+.5-
+  <c e gis bes dis'>-\markup { \override #'(baseline-skip . 2) \acAlt #"7" #"<9" #"<5" } % :9+.5+
 }
 MoreJazzChords = #(append (sequential-music-to-chord-exceptions MoreJazzChordsList #t) JazzChords)
 
