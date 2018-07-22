@@ -2,7 +2,7 @@
 
 This is a packaging of the lilyjazz 2.0 font packages and stylesheet for use with the `lyp` package manager.
 
-Most of the contents is just a rearrangement of Steve Lacy's (@slacy) https://github.com/OpenLilyPondFonts/lilyjazz repository (which itself is based on [Abraham Lee](tisimst.lilypond@gmail.com)'s font and lilypond work) to conform to `lyp` packing standards.
+Most of the contents is just a rearrangement of Steve Lacy's (@slacy) https://github.com/OpenLilyPondFonts/lilyjazz repository (which itself is based on [Abraham Lee](mailto:tisimst.lilypond@gmail.com)'s font and lilypond work) to conform to `lyp` packing standards.
 
 The only added files are:
 
