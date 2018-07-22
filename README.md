@@ -16,4 +16,4 @@ To restore the chord naming in the original package, add `\set chordNameExceptio
 
 ## Differences with original lilyjazz lyp package
 
-The primary difference between this package and the original lilyjazz package (https://github.com/lyp-packages/lilyjazz) is the use of a somewhat tamer chord font, which also correctly handles sharps and flats in chord symbols.
+The primary difference between this package and the original lilyjazz `lyp` package (https://github.com/lyp-packages/lilyjazz) is the use of a somewhat tamer chord font, which also correctly handles sharps and flats in chord symbols.
