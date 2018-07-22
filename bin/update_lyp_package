@@ -1,0 +1,40 @@
+#!/bin/sh
+
+LYP=`dirname $0`/..
+ORIG=$1
+
+mkdir -p $LYP/fonts
+mkdir -p $LYP/fontlogs
+/bin/echo -n>$LYP/package.ly
+
+# Lilypond files
+for ily in $ORIG/stylesheet/*; do
+    cp -v $ily $LYP
+    echo "\\pinclude \""`basename $ily`"\"" >> $LYP/package.ly
+done
+for ily in "morejazz.ily"; do
+    echo "\\pinclude \""`basename $ily`"\"" >> $LYP/package.ly
+done
+
+# Fonts
+cp -v $ORIG/{otf/*.otf,svg/*.svg,supplementary-files/*/*.otf} $LYP/fonts
+
+# Fontlogs
+mkdir -p $LYP/fontlogs/lilyjazz
+cp -f $ORIG/FONTLOG.txt $LYP/fontlogs/lilyjazz
+mkdir -p $LYP/fontlogs/lilyjazz-chord
+cp -f $ORIG/supplementary-files/lilyjazz-chord/FONTLOG.txt $LYP/fontlogs/lilyjazz-chord
+mkdir -p $LYP/fontlogs/lilyjazz-text
+cp -f $ORIG/supplementary-files/lilyjazz-text/FONTLOG.txt $LYP/fontlogs/lilyjazz-text
+
+# Tests
+for example in $ORIG/examples/*.ly; do
+    test=`basename $example`
+    cp -v $example $LYP/${test%.ly}_test.ly
+done
+
+# Misc
+cp -v $ORIG/LICENSE $ORIG/supplementary-files/lilyjazz-chord/OFL.txt $LYP
+
+# Prepare for commit
+git add $LYP/{fonts/*.otf,fonts/*.svg,*ly,LICENSE,OFL.txt,fontlogs/*/FONTLOG.txt}
