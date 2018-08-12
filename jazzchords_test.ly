@@ -1,5 +1,5 @@
 \version "2.19.2"
-#(set-global-staff-size 24)
+#(set-global-staff-size 20)
 \require "lilyjazz2:."
 
 \paper {
@@ -39,6 +39,7 @@ theChords = \chordmode {
 
 \score {
   <<
+    \override Score.ChordName #'font-size = #2.000000
     \new ChordNames \theChords
     \new Voice \theChords
   >>
