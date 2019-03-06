@@ -33,7 +33,7 @@
 % for minor chords, use "acMin" to print a small "m"
 #(define-markup-command (acMin layout props extension) (string?)
   (interpret-markup layout props
-    (markup #:small "m" #:super extension)))
+    (markup #:smaller #:smaller "m" #:super extension)))
 
 % for major chords, use "acMaj" to print a small "M"
 #(define-markup-command (acMaj layout props extension) (string?)
