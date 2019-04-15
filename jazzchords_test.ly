@@ -39,7 +39,7 @@ theChords = \chordmode {
 
 \score {
   <<
-    \override Score.ChordName #'font-size = #2.000000
+    \override Score.ChordName #'font-size = #3.000000
     \new ChordNames \theChords
     \new Voice \theChords
   >>

@@ -1,3 +1,7 @@
+#(define-markup-command (acMin layout props extension) (string?)
+  (interpret-markup layout props
+    (markup #:fontsize -2 "m" #:super extension)))
+
 #(define-markup-command (acMaj layout props extension) (string?)
   (interpret-markup layout props
     (markup #:super "^" #:super extension)))
@@ -17,10 +21,28 @@
 
 MoreJazzChordsList = {
 % Use dim7, not 7dim
+  <c es ges>1-\markup { \super "dim" } % :dim
   <c es ges beses>-\markup { \super "dim7" } % :dim7
 % Use 7(#5) not 7 #5
   <c es ges bes>-\markup { \acMin #"7(>5)" } % :m7.5-
   <c es gis bes>-\markup { \acMin #"7(<5)" } % :m7.5+
+% Use scalable m in acMin
+  <c es g>-\markup { \acMin #"" } % :m
+  <c es gis>-\markup { \acMin #"aug" } % :m5+ (Ab/C)
+  <c es g a>-\markup { \acMin #"6" } % :m6
+  <c es g bes>-\markup { \acMin #"7" } % :m7
+  <c es g d'>-\markup { \acMin #"add9" } % :m5.9
+  <c es g a d'>-\markup { \acMin #"6/9" } % :m6.9
+  <c es g bes des'>-\markup { \acMin #"7(>9)" } % :m7.9-
+  <c es g bes d'>-\markup { \acMin #"9" } % :m9
+  <c es ges bes d'>-\markup { \acMin #"9(>5)" } % :m9.5-
+  <c es g b d'>-\markup { \acMin #"9(M7)" } % :m9.7+
+  <c es g bes dis'>-\markup { \acMin #"7(<9)" } % :m7.9+
+  <c es g bes f'>-\markup { \acMin #"7(add 11)" } % :m7.11
+  <c es g bes a'>-\markup { \acMin #"7(add 13)" } % :m7.13
+  <c es g bes d' f'>-\markup { \acMin #"11" } % :m11
+  <c es ges bes d' f'>-\markup { \acMin #"11(>5)" } % :m11.5-
+  <c es g bes d' f' a'>-\markup { \acMin #"13" } % :m13
 % Use a triangle to represent Maj7 chords, not capital M
   <c e g b>-\markup { \acMaj #"" } % :maj
   <c e ges b>-\markup { \acMaj #"7(>5)" } % :maj.5-
@@ -34,6 +56,7 @@ MoreJazzChordsList = {
   <c es g b>-\markup { \acMin #"^" } % :m7+
   <c es g b d'>-\markup { \acMin #"^9" } % :m9.7+
 % More major third chords
+  <c e g a d'>-\markup { \super "6/9" } % :6.9
   <c e ges bes d'>-\markup { \super "9(>5)" } % :9.5-
   <c e ges bes d' a'>-\markup { \super "13(>5)" } % :13.5-
   <c e g bes d' fis' a'>-\markup { \super "13(<11)" } % :13.11+
